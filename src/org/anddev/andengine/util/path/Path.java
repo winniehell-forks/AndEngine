@@ -19,6 +19,7 @@ public class Path {
 	// ===========================================================
 
 	private final ArrayList<Step> mSteps = new ArrayList<Step>();
+	private float mCosts = 0.0f;
 
 	// ===========================================================
 	// Constructors
@@ -62,6 +63,14 @@ public class Path {
 
 	public int getTileRow(final int pIndex) {
 		return this.getStep(pIndex).getTileRow();
+	}
+
+	public float getCosts() {
+		return this.mCosts;
+	}
+
+	public void setCosts(float pCosts) {
+		this.mCosts = pCosts;
 	}
 
 	// ===========================================================

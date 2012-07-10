@@ -166,6 +166,7 @@ public class AStarPathFinder<T> implements IPathFinder<T> {
 			tmp = tmp.mParent;
 		}
 		path.prepend(pFromTileColumn, pFromTileRow);
+		path.setCosts(toNode.mCost);
 
 		return path;
 	}
