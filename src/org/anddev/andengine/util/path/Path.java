@@ -3,7 +3,7 @@ package org.anddev.andengine.util.path;
 import java.util.ArrayList;
 
 /**
- * (c) 2010 Nicolas Gramlich 
+ * (c) 2010 Nicolas Gramlich
  * (c) 2011 Zynga Inc.
  * 
  * @author Nicolas Gramlich
@@ -19,7 +19,6 @@ public class Path {
 	// ===========================================================
 
 	private final ArrayList<Step> mSteps = new ArrayList<Step>();
-	private float mCosts = 0.0f;
 
 	// ===========================================================
 	// Constructors
@@ -30,47 +29,39 @@ public class Path {
 	// ===========================================================
 
 	public int getLength() {
-		return this.mSteps.size();
+		return mSteps.size();
 	}
 
 	public Step getStep(final int pIndex) {
-		return this.mSteps.get(pIndex);
+		return mSteps.get(pIndex);
 	}
 
 	public Direction getDirectionToPreviousStep(final int pIndex) {
 		if(pIndex == 0) {
 			return null;
 		} else {
-			final int dX = this.getTileColumn(pIndex - 1) - this.getTileColumn(pIndex);
-			final int dY = this.getTileRow(pIndex - 1) - this.getTileRow(pIndex);
+			final int dX = getTileColumn(pIndex - 1) - getTileColumn(pIndex);
+			final int dY = getTileRow(pIndex - 1) - getTileRow(pIndex);
 			return Direction.fromDelta(dX, dY);
 		}
 	}
 
 	public Direction getDirectionToNextStep(final int pIndex) {
-		if(pIndex == this.getLength() - 1) {
+		if(pIndex == getLength() - 1) {
 			return null;
 		} else {
-			final int dX = this.getTileColumn(pIndex + 1) - this.getTileColumn(pIndex);
-			final int dY = this.getTileRow(pIndex + 1) - this.getTileRow(pIndex);
+			final int dX = getTileColumn(pIndex + 1) - getTileColumn(pIndex);
+			final int dY = getTileRow(pIndex + 1) - getTileRow(pIndex);
 			return Direction.fromDelta(dX, dY);
 		}
 	}
 
 	public int getTileColumn(final int pIndex) {
-		return this.getStep(pIndex).getTileColumn();
+		return getStep(pIndex).getTileColumn();
 	}
 
 	public int getTileRow(final int pIndex) {
-		return this.getStep(pIndex).getTileRow();
-	}
-
-	public float getCosts() {
-		return this.mCosts;
-	}
-
-	public void setCosts(float pCosts) {
-		this.mCosts = pCosts;
+		return getStep(pIndex).getTileRow();
 	}
 
 	// ===========================================================
@@ -86,7 +77,7 @@ public class Path {
 	}
 
 	public void append(final Step pStep) {
-		this.mSteps.add(pStep);
+		mSteps.add(pStep);
 	}
 
 	public void prepend(final int pTileColumn, final int pTileRow) {
@@ -94,11 +85,11 @@ public class Path {
 	}
 
 	public void prepend(final Step pStep) {
-		this.mSteps.add(0, pStep);
+		mSteps.add(0, pStep);
 	}
 
 	public boolean contains(final int pTileColumn, final int pTileRow) {
-		final ArrayList<Step> steps = this.mSteps;
+		final ArrayList<Step> steps = mSteps;
 		for(int i = steps.size() - 1; i >= 0; i--) {
 			final Step step = steps.get(i);
 			if(step.getTileColumn() == pTileColumn && step.getTileRow() == pTileRow) {
@@ -109,19 +100,19 @@ public class Path {
 	}
 
 	public int getFromTileRow() {
-		return this.getTileRow(0);
+		return getTileRow(0);
 	}
 
 	public int getFromTileColumn() {
-		return this.getTileColumn(0);
+		return getTileColumn(0);
 	}
 
 	public int getToTileRow() {
-		return this.getTileRow(this.mSteps.size() - 1);
+		return getTileRow(mSteps.size() - 1);
 	}
 
 	public int getToTileColumn() {
-		return this.getTileColumn(this.mSteps.size() - 1);
+		return getTileColumn(mSteps.size() - 1);
 	}
 
 	// ===========================================================
@@ -145,8 +136,8 @@ public class Path {
 		// ===========================================================
 
 		public Step(final int pTileColumn, final int pTileRow) {
-			this.mTileColumn = pTileColumn;
-			this.mTileRow = pTileRow;
+			mTileColumn = pTileColumn;
+			mTileRow = pTileRow;
 		}
 
 		// ===========================================================
@@ -154,11 +145,11 @@ public class Path {
 		// ===========================================================
 
 		public int getTileColumn() {
-			return this.mTileColumn;
+			return mTileColumn;
 		}
 
 		public int getTileRow() {
-			return this.mTileRow;
+			return mTileRow;
 		}
 
 		// ===========================================================
@@ -167,7 +158,7 @@ public class Path {
 
 		@Override
 		public int hashCode() {
-			return this.mTileColumn << 16 + this.mTileRow;
+			return mTileColumn << 16 + mTileRow;
 		}
 
 		@Override
@@ -182,10 +173,10 @@ public class Path {
 				return false;
 			}
 			final Step other = (Step) pOther;
-			if(this.mTileColumn != other.mTileColumn) {
+			if(mTileColumn != other.mTileColumn) {
 				return false;
 			}
-			if(this.mTileRow != other.mTileRow) {
+			if(mTileRow != other.mTileRow) {
 				return false;
 			}
 			return true;
