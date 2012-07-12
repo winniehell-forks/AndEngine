@@ -16,5 +16,5 @@ public interface IWeightedPathFinder<T> {
 	// Fields
 	// ===========================================================
 
-	public WeightedPath findPath(final T pEntity, final int pMaxCost, final int pFromTileColumn, final int pFromTileRow, final int pToTileColumn, final int pToTileRow);
+	public WeightedPath findPath(final T pEntity, final float pMaxCost, final int pFromTileColumn, final int pFromTileRow, final int pToTileColumn, final int pToTileRow) throws NegativeStepCostException;
 }
