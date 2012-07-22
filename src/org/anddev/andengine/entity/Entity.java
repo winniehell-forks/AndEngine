@@ -1046,8 +1046,8 @@ public class Entity implements IEntity {
 
 	public void onManagedDrawChildren(final GL10 pGL, final Camera pCamera) {
 		final ArrayList<IEntity> children = this.mChildren;
-		final int childCount = children.size();
-		for(int i = 0; i < childCount; i++) {
+
+		for(int i = 0; i < children.size(); i++) {
 			children.get(i).onDraw(pGL, pCamera);
 		}
 	}
